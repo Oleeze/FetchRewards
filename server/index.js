@@ -9,7 +9,20 @@ app.get("/data", (req, res) => {
   axios
     .get("https://fetch-hiring.s3.amazonaws.com/hiring.json")
     .then((response) => {
-      res.send(response.data);
+      let modifiedResponse = response.data
+        .filter((data) => data.name)
+        .sort((x, y) => x.name.split(" ")[1] - y.name.split(" ")[1])
+        .sort((x, y) => x.listId - y.listId)
+        .reduce((a, c) => {
+          if (!a[c.listId]) {
+            a[c.listId] = [];
+          }
+          a[c.listId].push(c);
+
+          return a;
+        }, {});
+
+      res.send(Object.values(modifiedResponse));
     })
     .catch((e) => {
       res.send(e);

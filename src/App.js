@@ -17,6 +17,7 @@ class App extends React.Component {
       .get("/data")
       .then((response) => {
         this.setState({ data: JSON.stringify(response.data) });
+        console.log(response.data);
       })
       .catch((e) => {
         console.log(e);
