@@ -36,3 +36,40 @@
     transform: rotate(360deg);
   }
 }
+
+h1,
+p {
+  margin: 0;
+  flex: 1;
+  border: 1px solid black;
+  box-sizing: border-box;
+  display: inline-block;
+  width: 50%;
+}
+
+h1 {
+  background-color: lightgray;
+}
+
+p {
+  padding: 1em 0;
+}
+
+.list {
+  padding: 1em;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.list:hover {
+  background-color: lightcyan;
+}
+
+.hidden {
+  display: none;
+}
+
+.rows {
+  margin: 0 auto;
+  width: 50%;
+}
